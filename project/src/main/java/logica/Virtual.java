@@ -1,4 +1,4 @@
-package com.example;
+package logica;
 
 public class Virtual implements Memoria {
     private static Virtual instancia = null;

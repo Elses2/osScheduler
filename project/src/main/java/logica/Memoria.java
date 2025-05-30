@@ -9,4 +9,4 @@ public interface Memoria {
     Pagina setPagina(int idL, Elemento elemento);
     Pagina getPagina(int idL);
 }
-
+         

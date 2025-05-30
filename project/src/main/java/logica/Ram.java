@@ -1,3 +1,4 @@
+package logica;
 public class Ram implements Memoria {
     private static Ram instancia = null;
 

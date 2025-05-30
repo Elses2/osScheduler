@@ -1,3 +1,5 @@
+package logica;
+
 public class Pagina {
     private int idL;           // Dirección lógica
     private Elemento elemento; // Contenido

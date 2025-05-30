@@ -1,3 +1,5 @@
+package logica;
+
 public interface Memoria {
     static int getTamanoArray(int tamano) {
         if (tamano % 4 != 0) {

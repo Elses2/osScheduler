@@ -1,3 +1,4 @@
+package logica;
 public class Elemento {
     private int idL;     // ID lógica
     private int valor;   // Valor encapsulado

@@ -1,3 +1,4 @@
+package logica;
 public class TablaPagina {
 
     private Ram ram;        // Segmento de memoria RAM (singleton)

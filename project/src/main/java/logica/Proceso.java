@@ -21,7 +21,7 @@ public class Proceso {
             elementos.add(new Elementos(i));
         }
     }
-
+    
     public void agregarElemento(Elementos elemento) {
         elementos.add(elemento);
     }
@@ -39,6 +39,9 @@ public class Proceso {
                 System.out.println(e);
             }
         }
+    }
+    public int getCantidadaElementos(){ //Devuelve la cantidad de elementos dentro del proceso
+        return elementos.size();
     }
 }
 

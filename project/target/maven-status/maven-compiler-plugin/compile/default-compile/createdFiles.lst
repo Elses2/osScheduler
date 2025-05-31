@@ -1,0 +1,9 @@
+logica/Pagina.class
+logica/Elemento.class
+logica/MemoriaAbsoluta.class
+logica/Memoria.class
+logica/TablaPagina.class
+logica/Ram.class
+menu/Main.class
+logica/Virtual.class
+logica/Proceso.class

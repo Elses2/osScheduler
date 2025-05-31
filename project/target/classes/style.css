@@ -20,4 +20,14 @@
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
+.fondo {
+    -fx-background-color: #2e2e2e; /* gris oscuro */
+}
+
+.mensaje-hola {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
 

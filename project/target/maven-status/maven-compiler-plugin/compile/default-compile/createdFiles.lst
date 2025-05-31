@@ -1,10 +1,11 @@
 logica/Pagina.class
+Main.class
 logica/Elemento.class
 menu/MostrarMemoria.class
+menu/Menu.class
 logica/MemoriaAbsoluta.class
 logica/Memoria.class
 logica/TablaPagina.class
 logica/Ram.class
-menu/Main.class
 logica/Virtual.class
 logica/Proceso.class

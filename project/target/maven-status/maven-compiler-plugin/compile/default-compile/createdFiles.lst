@@ -1,5 +1,6 @@
 logica/Pagina.class
 logica/Elemento.class
+menu/MostrarMemoria.class
 logica/MemoriaAbsoluta.class
 logica/Memoria.class
 logica/TablaPagina.class

@@ -1,3 +1,4 @@
+package logica;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -10,6 +11,8 @@ public class VirtualTest {
     public void setUp() {
         resetSingleton(); // Reinicia la instancia del Singleton
         virtual = Virtual.getInstancia(12); // 12 / 4 = 3 páginas
+        virtual.setPagina(0, new Elemento(3, 100, 5));
+       
     }
 
     @Test
@@ -49,12 +52,26 @@ public class VirtualTest {
         assertNull(resultado);
     }
 
+
     @Test
     public void testGetArrayMemoriaDevuelveArrayCorrecto() {
         Pagina[] array = virtual.getArrayMemoria();
         assertNotNull(array);
         assertEquals(3, array.length); // 12 / 4 = 3 páginas
     }
+    @Test
+    public void testGetPagina_Existe() {
+        virtual.setPagina(1, new Elemento(1, 100, 7)); 
+        Pagina encontrada = virtual.getPagina(1);     
+        assertNotNull("La página con ID 1 no fue encontrada", encontrada);
+        assertEquals(1, encontrada.getIdL());
+    }
+    @Test
+    public void testGetPagina_NoExiste() {
+        Pagina encontrada = virtual.getPagina(999);
+        assertNull(encontrada);
+    }
+
 
     // Método para reiniciar el singleton de Virtual
     private void resetSingleton() {

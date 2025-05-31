@@ -1,3 +1,4 @@
+package logica;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -10,6 +11,7 @@ public class RamTest {
     public void setUp() {
         resetSingleton(); // reset entre pruebas
         ram = Ram.getInstancia(8); // 8 → 8 / 4 = 2 páginas
+        ram.setPagina(0, new Elemento(1, 10, 5));
     }
 
     @Test

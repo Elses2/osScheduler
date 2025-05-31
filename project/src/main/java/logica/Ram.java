@@ -38,7 +38,7 @@ public class Ram implements Memoria {
         }
         return null;
     }
-
+    @Override
     public Pagina[] getArrayMemoria() {
         return arrayMemoria;
     }

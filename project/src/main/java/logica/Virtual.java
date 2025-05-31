@@ -41,7 +41,7 @@ public class Virtual implements Memoria {
         }
         return null;
     }
-
+    @Override
     public Pagina[] getArrayMemoria() {
         return arrayMemoria;
     }

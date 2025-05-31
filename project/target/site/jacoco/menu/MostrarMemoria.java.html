@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MostrarMemoria.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scheduler</a> &gt; <a href="index.source.html" class="el_package">menu</a> &gt; <span class="el_source">MostrarMemoria.java</span></div><h1>MostrarMemoria.java</h1><pre class="source lang-java linenums">package menu;
+
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import logica.Pagina;
+
+public class MostrarMemoria {
+    private VBox grafico;       // Representación visual
+    private Pagina[] array;     // Array de páginas a representar
+
+<span class="fc" id="L14">    public MostrarMemoria(Pagina[] array) {</span>
+<span class="fc" id="L15">        this.array = array;</span>
+<span class="fc" id="L16">        this.grafico = new VBox(5); // Espaciado entre celdas</span>
+<span class="fc" id="L17">        representar();</span>
+<span class="fc" id="L18">    }</span>
+
+    protected void representar() {
+<span class="fc" id="L21">        grafico.getChildren().clear();</span>
+
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        for (int i = 0; i &lt; array.length; i++) {</span>
+<span class="fc" id="L24">            Pagina pagina = array[i];</span>
+
+<span class="fc" id="L26">            HBox celda = new HBox(10); // Espaciado entre elementos dentro de la celda</span>
+<span class="fc" id="L27">            celda.setAlignment(Pos.CENTER_LEFT);</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            celda.getStyleClass().add(pagina.getEstado() ? &quot;celda-libre&quot; : &quot;celda-ocupada&quot;);</span>
+
+<span class="fc" id="L30">            Label indiceLabel = new Label(i + &quot;:&quot;);</span>
+<span class="fc" id="L31">            indiceLabel.getStyleClass().add(&quot;texto-celda&quot;);</span>
+
+<span class="fc bfc" id="L33" title="All 2 branches covered.">            String texto = pagina.getEstado() ? &quot;Libre&quot; : &quot;proceso: &quot; + pagina.getIdP();</span>
+<span class="fc" id="L34">            Label label = new Label(texto);</span>
+<span class="fc" id="L35">            label.getStyleClass().add(&quot;texto-celda&quot;);</span>
+
+<span class="fc" id="L37">            celda.getChildren().addAll(indiceLabel, label);</span>
+<span class="fc" id="L38">            grafico.getChildren().add(celda);</span>
+        }
+<span class="fc" id="L40">    }</span>
+
+    public VBox getTabla() {
+<span class="fc" id="L43">        return grafico;</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

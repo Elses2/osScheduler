@@ -20,16 +20,21 @@ public class MostrarMemoria {
     protected void representar() {
         grafico.getChildren().clear();
 
-        for (Pagina pagina : array) {
-            HBox celda = new HBox();
-            celda.setAlignment(Pos.CENTER);
+        for (int i = 0; i < array.length; i++) {
+            Pagina pagina = array[i];
+
+            HBox celda = new HBox(10); // Espaciado entre elementos dentro de la celda
+            celda.setAlignment(Pos.CENTER_LEFT);
             celda.getStyleClass().add(pagina.getEstado() ? "celda-libre" : "celda-ocupada");
 
-            String texto = pagina.getEstado() ? "Libre" : "proceso:" + pagina.getIdP();
+            Label indiceLabel = new Label(i + ":");
+            indiceLabel.getStyleClass().add("texto-celda");
+
+            String texto = pagina.getEstado() ? "Libre" : "proceso: " + pagina.getIdP();
             Label label = new Label(texto);
             label.getStyleClass().add("texto-celda");
 
-            celda.getChildren().add(label);
+            celda.getChildren().addAll(indiceLabel, label);
             grafico.getChildren().add(celda);
         }
     }

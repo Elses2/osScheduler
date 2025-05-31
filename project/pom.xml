@@ -41,7 +41,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
-                    <mainClass>pack.Main</mainClass>
+                    <mainClass>menu.Main</mainClass>
                 </configuration>
             </plugin>
 

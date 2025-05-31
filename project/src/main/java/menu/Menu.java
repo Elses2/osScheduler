@@ -17,8 +17,7 @@ public class Menu {
         root.getChildren().add(label);
 
         Scene scene = new Scene(root, 600, 400); // Tamaño de ventana
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-    
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());    
         stage.setTitle("Mi Aplicación");
         stage.setScene(scene);
         stage.show();

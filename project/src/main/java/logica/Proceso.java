@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Proceso {
     private int idProceso;
-    private List<Elemento> elementos; // Composición de elementos
+    private List<Elemento> elementos; // Composición de elementos, 
 
     public Proceso(int idProceso) {
         this.idProceso = idProceso;
@@ -29,6 +29,10 @@ public class Proceso {
 
     public void eliminarElemento(Elemento elemento) {
         elementos.remove(elemento);
+    }
+    List<Elemento> getElementos() {
+    return elementos;
+
     }
 
     public void mostrarElementos() {

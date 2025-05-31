@@ -51,7 +51,7 @@ public class ProcesoTest {
         // Eliminar todos los elementos
         proceso = new Proceso(1);
         for (int i = 1; i <= 10; i++) {
-            proceso.eliminarElemento(proceso.elementos.get(0));
+            proceso.eliminarElemento(proceso.getElementos().get(0));
         }
 
         ByteArrayOutputStream salida = new ByteArrayOutputStream();

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Virtual.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scheduler</a> &gt; <a href="index.source.html" class="el_package">logica</a> &gt; <span class="el_source">Virtual.java</span></div><h1>Virtual.java</h1><pre class="source lang-java linenums">package logica;
+
+public class Virtual implements Memoria {
+<span class="fc" id="L4">    private static Virtual instancia = null;</span>
+
+    protected int tamano;
+    protected Pagina[] arrayMemoria; //Array de paginas
+
+    // Constructor privado
+<span class="fc" id="L10">    private Virtual(int tamanoTotal) {</span>
+<span class="fc" id="L11">        this.tamano = Memoria.getTamanoArray(tamanoTotal);</span>
+<span class="fc" id="L12">        this.arrayMemoria = new Pagina[this.tamano]; //instancia un nuevo array con un tamaño establecido por la funcion getTamañoArray de memoria</span>
+<span class="fc" id="L13">    }</span>
+
+    // Método estático para obtener la única instancia
+    public static Virtual getInstancia(int tamanoTotal) {
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (instancia == null) {</span>
+<span class="fc" id="L18">            instancia = new Virtual(tamanoTotal);</span>
+        }
+<span class="fc" id="L20">        return instancia;</span>
+    }
+
+    @Override
+    public Pagina setPagina(int idL, Elemento elemento) { //Agrega una nueva pagina siempre y cuando esten disponibles las paginas dentro del disco
+<span class="fc" id="L25">        Pagina nuevaPagina = new Pagina(idL, elemento);</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        for (int i = 0; i &lt; arrayMemoria.length; i++) {</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">            if (arrayMemoria[i] == null) {</span>
+<span class="fc" id="L28">                arrayMemoria[i] = nuevaPagina;</span>
+<span class="fc" id="L29">                return nuevaPagina;</span>
+            }
+        }
+<span class="fc" id="L32">        throw new RuntimeException(&quot;Memoria Virtual llena, no se puede cargar más páginas.&quot;);</span>
+    }
+
+    @Override
+    public Pagina getPagina(int idL) { //Devuelve la pagina para luego hacer el intercambio
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        for (Pagina pagina : arrayMemoria) {</span>
+<span class="fc bfc" id="L38" title="All 4 branches covered.">            if (pagina != null &amp;&amp; pagina.getIdL() == idL) {</span>
+<span class="fc" id="L39">                return pagina;</span>
+            }
+        }
+<span class="fc" id="L42">        return null;</span>
+    }
+
+    public Pagina[] getArrayMemoria() {
+<span class="fc" id="L46">        return arrayMemoria;</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

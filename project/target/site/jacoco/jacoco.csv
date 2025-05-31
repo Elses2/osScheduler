@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+scheduler,logica,TablaPagina,0,124,1,15,0,25,1,12,0,5
+scheduler,logica,Memoria,0,13,0,2,0,3,0,2,0,1
+scheduler,logica,Proceso,0,91,0,6,0,22,0,11,0,8
+scheduler,logica,Virtual,0,86,0,12,0,19,0,12,0,6
+scheduler,logica,Pagina,0,40,0,4,0,15,0,8,0,6
+scheduler,logica,Ram,0,86,0,12,0,19,0,12,0,6
+scheduler,logica,Elemento,0,21,0,0,0,8,0,4,0,4
+scheduler,menu,Main,7,0,0,0,3,0,2,0,2,0

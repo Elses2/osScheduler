@@ -1,10 +1,10 @@
 .celda-libre {
-    -fx-background-color: #d0f0c0;
+    -fx-background-color: #cceeff;  /* celeste claro */
     -fx-padding: 10;
-    -fx-border-color: #90ee90;
+    -fx-border-color: #66ccff;     /* borde celeste */
     -fx-border-width: 2;
     -fx-border-radius: 5;
-    -fx-background-radius: 5;
+    -fx-background-radius: 5; 
 }
 
 .celda-ocupada {
@@ -29,5 +29,5 @@
     -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
-      
+           
 

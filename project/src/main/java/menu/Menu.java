@@ -29,6 +29,7 @@ public class Menu {
         // Añadir a un HBox (contenedor general para más elementos en el futuro)
         HBox contenedor = new HBox();
         contenedor.getChildren().add(graficoRam);
+        contenedor.getStyleClass().add("fondo");
 
         Scene scene = new Scene(contenedor, 600, 400);
         URL styleUrl = getClass().getResource("/style.css");
@@ -42,4 +43,4 @@ public class Menu {
         stage.show();
     }
 }
-
+      

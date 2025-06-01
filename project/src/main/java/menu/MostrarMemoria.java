@@ -16,31 +16,46 @@ public class MostrarMemoria {
         this.grafico = new VBox(5); // Espaciado entre celdas
         representar();
     }
-
+    /**
+     * Actualiza la representación visual de las páginas.
+     * Limpia el VBox y vuelve a crear las celdas para cada página.
+     */
     protected void representar() {
-        grafico.getChildren().clear();
+    grafico.getChildren().clear();
 
-        for (int i = 0; i < array.length; i++) {
-            Pagina pagina = array[i];
+    for (int i = 0; i < array.length; i++) {
+        Pagina pagina = array[i];
 
-            HBox celda = new HBox(10); // Espaciado entre elementos dentro de la celda
-            celda.setAlignment(Pos.CENTER_LEFT);
+        HBox celda = new HBox(10); // Espaciado entre elementos dentro de la celda
+        celda.setAlignment(Pos.CENTER_LEFT);
+
+        Label indiceLabel = new Label(i + ":");
+        indiceLabel.getStyleClass().add("texto-celda");
+
+        Label label;
+
+        if (pagina != null) {
             celda.getStyleClass().add(pagina.getEstado() ? "celda-libre" : "celda-ocupada");
-
-            Label indiceLabel = new Label(i + ":");
-            indiceLabel.getStyleClass().add("texto-celda");
-
             String texto = pagina.getEstado() ? "Libre" : "proceso: " + pagina.getIdP();
-            Label label = new Label(texto);
-            label.getStyleClass().add("texto-celda");
-
-            celda.getChildren().addAll(indiceLabel, label);
-            grafico.getChildren().add(celda);
+            label = new Label(texto);
+        } else {
+            celda.getStyleClass().add("celda-libre"); // o una clase diferente si querés marcarlo como "null"
+            label = new Label("Vacío"); // o "Libre", o lo que tenga sentido en tu contexto
         }
+
+        label.getStyleClass().add("texto-celda");
+
+        celda.getChildren().addAll(indiceLabel, label);
+        grafico.getChildren().add(celda);
     }
+}
+    /**
+     * Devuelve el VBox que contiene la representación visual de las páginas.
+     * @return VBox con la representación de las páginas.
+     */
 
     public VBox getTabla() {
         return grafico;
     }
 }
-
+      

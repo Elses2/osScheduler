@@ -1,26 +1,45 @@
 package menu;
 
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.net.URL;
+import logica.*;
+ 
 
 public class Menu {
 
+    private Memoria memoria;
+
+    public Menu(Memoria memoria) { 
+        this.memoria = memoria;
+    }
+
     public void mostrar(Stage stage) {
-        StackPane root = new StackPane();
-        root.getStyleClass().add("fondo");
+        // Obtener array de memoria desde el objeto Memoria (Ram en este caso)
+        Pagina[] array = memoria.getArrayMemoria();
 
-        Label label = new Label("Hola");
-        label.getStyleClass().add("mensaje-hola");
+        // Crear MostrarMemoria
+        MostrarMemoria mostrar = new MostrarMemoria(array);
+        VBox graficoRam = mostrar.getTabla(); // VBox con celdas
 
-        root.getChildren().add(label);
+        // Añadir a un HBox (contenedor general para más elementos en el futuro)
+        HBox contenedor = new HBox();
+        contenedor.getChildren().add(graficoRam);
 
-        Scene scene = new Scene(root, 600, 400); // Tamaño de ventana
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());    
+        Scene scene = new Scene(contenedor, 600, 400);
+        URL styleUrl = getClass().getResource("/style.css");
+        if (styleUrl != null) {
+           scene.getStylesheets().add(styleUrl.toExternalForm());
+        } else {
+            System.out.println("style.css no encontrado");
+        }     
         stage.setTitle("Mi Aplicación");
         stage.setScene(scene);
         stage.show();
     }
 }
-                        
+

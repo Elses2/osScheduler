@@ -111,16 +111,24 @@ public class Scheduler {
     /**
      * Muestra el estado de la RAM y la Virtual para debug.
      */
-    public void mostrarEstado() {
-        System.out.println("Estado de RAM:");
-        for (Pagina p : ram.getArrayMemoria()) {
-            if (p != null)
-                System.out.println("Proceso: " + p.getIdP() + ", Pagina: " + p.getIdL());
-        }
-        System.out.println("Estado de Virtual:");
-        for (Pagina p : virtual.getArrayMemoria()) {
-            if (p != null)
-                System.out.println("Proceso: " + p.getIdP() + ", Pagina: " + p.getIdL());
-        }
+  public void mostrarEstado() {
+    System.out.println("Estado de RAM:");
+    Pagina[] arrayRam = ram.getArrayMemoria();
+    for (int i = 0; i < arrayRam.length; i++) {
+        Pagina p = arrayRam[i];
+        if (p != null)
+            System.out.println("Proceso: " + p.getIdP() +
+                               ", Direccion logica: " + p.getIdL() +
+                               ",  Direccion fisica: " + i);
     }
-}
+    System.out.println("Estado de Virtual:");
+    Pagina[] arrayVirtual = virtual.getArrayMemoria();
+    for (int i = 0; i < arrayVirtual.length; i++) {
+        Pagina p = arrayVirtual[i];
+        if (p != null)
+            System.out.println("Proceso: " + p.getIdP() +
+                               ", Direccion logica: " + p.getIdL() +
+                               ",  Direccion fisica: " + i);
+    }
+} 
+}        

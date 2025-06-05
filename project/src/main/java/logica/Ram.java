@@ -2,7 +2,7 @@ package logica;
 public class Ram implements Memoria {
     private static Ram instancia = null;
 
-    protected int tamano;
+    protected int tamano;///tamano es la cantidad de paginas que tendra el array
     protected Pagina[] arrayMemoria;
 
     private Ram(int tamanoTotal) {

@@ -17,7 +17,7 @@ public class TablaPagina {
 
         for (int i = 0; i < cantidadElementos; i++) {
             tabla[i][0] = i;     // Dirección lógica
-            tabla[i][1] = -1;    // Dirección física aún no asignada
+            tabla[i][1] = -1;    // Dirección física aún no asignadaj
         }
     }
 

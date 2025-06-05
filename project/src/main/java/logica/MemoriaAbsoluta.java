@@ -3,9 +3,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-// AÑADE ESTE IMPORT SI QUIERES SER EXPLÍCITO (opcional si están en el mismo paquete)
-// import logica.TablaPagina;
-
 /**
  * La clase MemoriaAbsoluta simula una memoria que almacena todas las tablas de páginas
  * de los procesos activos en el sistema.

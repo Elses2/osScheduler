@@ -1,0 +1,22 @@
+Scheduler
+
+Responsabilidad: Gestiona la carga, descarga y swap de procesos entre RAM y Memoria Virtual.
+
+    Atributos:
+        Ram ram: Instancia de RAM utilizada.
+        Virtual virtual: Instancia de Memoria Virtual.
+        int ramSize: Tamaño de RAM.
+        int virtualSize: Tamaño de Memoria Virtual.
+        Queue<Integer> procesosEnRam: Cola (FIFO) para el orden de procesos en RAM.
+
+    Constructor:
+        Scheduler(int ramSize, int virtualSize): Inicializa el scheduler y las memorias.
+
+    Métodos:
+        boolean cargarProcesoEnRam(Proceso proceso): Intenta cargar un proceso en RAM.
+        void swapProcesoARam(Proceso nuevoProceso): Realiza swap para dejar espacio a un nuevo proceso.
+        void descargarProcesoDeRam(int idProceso): Descarga un proceso de la RAM a virtual.
+        void descargarProcesoDeVirtual(int idProceso): Elimina las páginas de un proceso en la virtual.
+        private int contarEspaciosLibres(Pagina[] array): Cuenta los espacios libres en un array de páginas.
+        void mostrarEstado(): Imprime el estado de la RAM y Virtual.
+

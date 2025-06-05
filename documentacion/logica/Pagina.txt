@@ -1,0 +1,19 @@
+Pagina
+
+Responsabilidad: Representa una página de memoria.
+
+    Atributos:
+        int idL: Dirección lógica.
+        Elemento elemento: El elemento almacenado en la página.
+        boolean estado: Indica si está libre (true) u ocupada (false).
+
+    Constructor:
+        Pagina(int idL, Elemento elemento): Crea una página y actualiza automáticamente el estado.
+
+    Métodos:
+        Elemento getElemento(): Devuelve el elemento almacenado.
+        int getIdL(): Devuelve la dirección lógica.
+        int getIdP(): Devuelve el ID del proceso del elemento.
+        void calcEstado(): Calcula si la página está libre u ocupada.
+        boolean getEstado(): Devuelve el estado de la página.
+

@@ -1,0 +1,18 @@
+TablaPagina
+
+Responsabilidad: Tabla de paginación que relaciona direcciones lógicas y físicas de un proceso.
+
+    Atributos:
+        Ram ram: Referencia a la RAM (singleton).
+        int idP: ID del proceso.
+        int[][] tabla: Matriz de paginación [direccion logica][direccion fisica].
+
+    Constructor:
+        TablaPagina(int cantidadElementos, int idProceso): Inicializa la tabla con direcciones lógicas y físicas no asignadas.
+
+    Métodos:
+        void actualizar(): Actualiza la tabla según el contenido actual de RAM.
+        int[][] getTabla(): Devuelve la tabla.
+        void imprimirTabla(): Imprime la tabla por consola.
+        int getIdP(): Devuelve el ID del proceso.
+

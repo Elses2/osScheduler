@@ -1,0 +1,80 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.5 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.5">
+  <diagram name="Class Diagram" id="SwZZfq4x-EApRyfX0Ang">
+    <mxGraphModel dx="828" dy="556" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3dGKlOe7znjYkti4OGKc-1" value="&lt;&lt;interface&gt;&gt;&#xa;Memoria" style="rounded=1;whiteSpace=wrap;html=1;shape=umlInterface;" vertex="1" parent="1">
+          <mxGeometry x="60" y="200" width="130" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-2" value="Ram&#xa;- instancia: Ram&#xa;- tamano: int&#xa;- arrayMemoria: Pagina[]&#xa;---&#xa;+ getInstancia(int): Ram&#xa;+ setPagina(int, Elemento): Pagina&#xa;+ getPagina(int): Pagina&#xa;+ getArrayMemoria(): Pagina[]" style="rounded=1;whiteSpace=wrap;html=1;shape=umlClass;" vertex="1" parent="1">
+          <mxGeometry x="300" y="10" width="220" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-4" value="Pagina&#xa;- idL: int&#xa;- elemento: Elemento&#xa;- estado: boolean&#xa;---&#xa;+ Pagina(int, Elemento)&#xa;+ getElemento(): Elemento&#xa;+ getIdL(): int&#xa;+ getIdP(): int&#xa;+ calcEstado(): void&#xa;+ getEstado(): boolean" style="rounded=1;whiteSpace=wrap;html=1;shape=umlClass;" vertex="1" parent="1">
+          <mxGeometry x="440" y="530" width="220" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-5" value="Elemento&#xa;- idL: int&#xa;- valor: int&#xa;- idP: int&#xa;---&#xa;+ Elemento(int, int, int)&#xa;+ getValor(): int&#xa;+ getIdL(): int&#xa;+ getIdP(): int" style="rounded=1;whiteSpace=wrap;html=1;shape=umlClass;" vertex="1" parent="1">
+          <mxGeometry x="455" y="780" width="190" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-6" value="Proceso&#xa;- idProceso: int&#xa;- elementos: List&lt;Elemento&gt;&#xa;---&#xa;+ Proceso(int)&#xa;+ getIdProceso(): int&#xa;+ agregarElemento(Elemento): void&#xa;+ eliminarElemento(Elemento): void&#xa;+ getElementos(): List&#xa;+ mostrarElementos(): void&#xa;+ getCantidadaElementos(): int" style="rounded=1;whiteSpace=wrap;html=1;shape=umlClass;" vertex="1" parent="1">
+          <mxGeometry x="70" y="530" width="250" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-7" value="TablaPagina&#xa;- ram: Ram&#xa;- idP: int&#xa;- tabla: int[][]&#xa;---&#xa;+ TablaPagina(int, int)&#xa;+ actualizar(): void&#xa;+ getTabla(): int[][]&#xa;+ imprimirTabla(): void&#xa;+ getIdP(): int" style="rounded=1;whiteSpace=wrap;html=1;shape=umlClass;" vertex="1" parent="1">
+          <mxGeometry x="710" y="545" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-8" value="MemoriaAbsoluta&#xa;- lista: List&lt;TablaPagina&gt;&#xa;---&#xa;+ MemoriaAbsoluta()&#xa;+ addTablaPagina(TablaPagina): void&#xa;+ deleteTabla(int): boolean&#xa;+ getTabla(int): TablaPagina&#xa;+ getLista(): List&lt;TablaPagina&gt;" style="rounded=1;whiteSpace=wrap;html=1;shape=umlClass;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="545" width="220" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-9" value="Scheduler&#xa;- ram: Ram&#xa;- virtual: Virtual&#xa;- ramSize: int&#xa;- virtualSize: int&#xa;- procesosEnRam: Queue&lt;int&gt;&#xa;---&#xa;+ Scheduler(int, int)&#xa;+ cargarProcesoEnRam(Proceso): boolean&#xa;+ swapProcesoARam(Proceso): void&#xa;+ descargarProcesoDeRam(int): void&#xa;+ descargarProcesoDeVirtual(int): void&#xa;+ mostrarEstado(): void" style="rounded=1;whiteSpace=wrap;html=1;shape=umlClass;" vertex="1" parent="1">
+          <mxGeometry x="900" y="60" width="270" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-10" style="endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="3dGKlOe7znjYkti4OGKc-2" target="3dGKlOe7znjYkti4OGKc-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-11" style="endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="3dGKlOe7znjYkti4OGKc-3" target="3dGKlOe7znjYkti4OGKc-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-12" style="endArrow=oval;endFill=0;" edge="1" parent="1" source="3dGKlOe7znjYkti4OGKc-3" target="3dGKlOe7znjYkti4OGKc-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-13" style="endArrow=oval;endFill=0;" edge="1" parent="1" source="3dGKlOe7znjYkti4OGKc-3" target="3dGKlOe7znjYkti4OGKc-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-14" style="endArrow=open;endFill=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3dGKlOe7znjYkti4OGKc-4" target="3dGKlOe7znjYkti4OGKc-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="526.4285714285713" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-15" style="endArrow=oval;endFill=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3dGKlOe7znjYkti4OGKc-6" target="3dGKlOe7znjYkti4OGKc-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="578" as="sourcePoint" />
+            <mxPoint x="410" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-16" style="endArrow=open;endFill=0;" edge="1" parent="1" source="3dGKlOe7znjYkti4OGKc-7" target="3dGKlOe7znjYkti4OGKc-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-17" style="endArrow=oval;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="3dGKlOe7znjYkti4OGKc-8" target="3dGKlOe7znjYkti4OGKc-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="990" y="435" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-18" style="endArrow=open;endFill=0;" edge="1" parent="1" source="3dGKlOe7znjYkti4OGKc-9" target="3dGKlOe7znjYkti4OGKc-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-19" style="endArrow=open;endFill=0;" edge="1" parent="1" source="3dGKlOe7znjYkti4OGKc-9" target="3dGKlOe7znjYkti4OGKc-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-20" value="" style="endArrow=oval;endFill=0;" edge="1" parent="1" source="3dGKlOe7znjYkti4OGKc-2" target="3dGKlOe7znjYkti4OGKc-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="439" y="180" as="sourcePoint" />
+            <mxPoint x="500" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3dGKlOe7znjYkti4OGKc-3" value="Virtual&#xa;- instancia: Virtual&#xa;- tamano: int&#xa;- arrayMemoria: Pagina[]&#xa;---&#xa;+ getInstancia(int): Virtual&#xa;+ setPagina(int, Elemento): Pagina&#xa;+ getPagina(int): Pagina&#xa;+ getArrayMemoria(): Pagina[]" style="rounded=1;whiteSpace=wrap;html=1;shape=umlClass;" vertex="1" parent="1">
+          <mxGeometry x="315" y="280" width="220" height="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

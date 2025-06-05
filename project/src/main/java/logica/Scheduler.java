@@ -118,7 +118,7 @@ public class Scheduler {
         Pagina p = arrayRam[i];
         if (p != null)
             System.out.println("Proceso: " + p.getIdP() +
-                               ", Direccion logica: " + p.getIdL() +
+                               ", Direccion logica: " + (p.getIdL() - 1) +
                                ",  Direccion fisica: " + i);
     }
     System.out.println("Estado de Virtual:");
@@ -127,8 +127,8 @@ public class Scheduler {
         Pagina p = arrayVirtual[i];
         if (p != null)
             System.out.println("Proceso: " + p.getIdP() +
-                               ", Direccion logica: " + p.getIdL() +
+                               ", Direccion logica: " + (p.getIdL() - 1) +
                                ",  Direccion fisica: " + i);
     }
-} 
+}  
 }        

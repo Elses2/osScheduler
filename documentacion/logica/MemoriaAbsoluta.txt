@@ -1,0 +1,16 @@
+MemoriaAbsoluta
+
+Responsabilidad: Almacena todas las tablas de páginas de los procesos activos.
+
+    Atributos:
+        List<TablaPagina> lista: Lista de tablas de páginas almacenadas.
+
+    Constructor:
+        MemoriaAbsoluta(): Inicializa la lista de tablas de páginas.
+
+    Métodos:
+        void addTablaPagina(TablaPagina tabla): Agrega una tabla de páginas.
+        boolean deleteTabla(int idP): Elimina la tabla asociada a un proceso.
+        TablaPagina getTabla(int idP): Obtiene la tabla de un proceso.
+        List<TablaPagina> getLista(): Devuelve la lista de tablas.
+

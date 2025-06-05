@@ -1,0 +1,19 @@
+Proceso
+
+Responsabilidad: Representa un proceso con sus elementos.
+
+    Atributos:
+        int idProceso: ID del proceso.
+        List<Elemento> elementos: Lista de elementos del proceso.
+
+    Constructor:
+        Proceso(int idProceso): Crea el proceso, inicializa los elementos y carga 10 elementos por defecto.
+
+    Métodos:
+        int getIdProceso(): Devuelve el ID del proceso.
+        void agregarElemento(Elemento elemento): Agrega un elemento.
+        void eliminarElemento(Elemento elemento): Elimina un elemento.
+        List<Elemento> getElementos(): Devuelve la lista de elementos.
+        void mostrarElementos(): Muestra los elementos por consola.
+        int getCantidadaElementos(): Devuelve el número de elementos.
+

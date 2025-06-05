@@ -1,0 +1,15 @@
+Responsabilidad: Representa un elemento con ID lógico, valor y el proceso al que pertenece.
+
+    Atributos:
+        int idL: ID lógico del elemento.
+        int valor: Valor encapsulado por el elemento.
+        int idP: ID del proceso al que pertenece el elemento.
+
+    Constructor:
+        Elemento(int idL, int valor, int idP): Crea un nuevo elemento con los datos indicados.
+
+    Métodos:
+        int getValor(): Devuelve el valor del elemento.
+        int getIdL(): Devuelve el ID lógico.
+        int getIdP(): Devuelve el ID del proceso.
+

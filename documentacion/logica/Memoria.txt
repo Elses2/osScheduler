@@ -1,0 +1,10 @@
+Memoria (Interfaz)
+
+Responsabilidad: Define operaciones comunes para una memoria (RAM o Virtual).
+
+    Métodos:
+        static int getTamanoArray(int tamano): Calcula el tamaño de array de páginas, debe ser múltiplo de 4.
+        Pagina setPagina(int idL, Elemento elemento): Agrega una página a la memoria.
+        Pagina getPagina(int idL): Devuelve la página asociada a una dirección lógica.
+        Pagina[] getArrayMemoria(): Devuelve el array de páginas.
+

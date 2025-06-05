@@ -1,0 +1,20 @@
+Virtual
+
+Responsabilidad: Simula la memoria virtual del sistema.
+
+    Atributos:
+        static Virtual instancia: Instancia única (Singleton).
+        int tamano: Tamaño de la memoria virtual.
+        Pagina[] arrayMemoria: Array de páginas.
+
+    Constructor: (Privado, Singleton)
+        Virtual(int tamanoTotal): Inicializa la memoria virtual.
+
+    Métodos:
+        static Virtual getInstancia(int tamanoTotal): Devuelve la instancia única.
+        Pagina setPagina(int idL, Elemento elemento): Agrega una página.
+        Pagina getPagina(int idL): Busca una página por dirección lógica.
+        Pagina[] getArrayMemoria(): Devuelve el array de páginas.
+
+    Patrón de diseño: Singleton
+

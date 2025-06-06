@@ -4,20 +4,22 @@ import java.util.*;
 public class Proceso {
     private int idProceso;
     private List<Elemento> elementos; // Composición de elementos, 
+    private int cantidadElementos;
 
-    public Proceso(int idProceso) {
+    public Proceso(int idProceso, int cantidadElementos) {
         this.idProceso = idProceso;
+        this.cantidadElementos = cantidadElementos;
         this.elementos = new ArrayList<>();
-        cargarElementosPorDefecto(); // Carga automática de elementos por defecto
+        cargarElementos(); // Carga automática de elementos
     }
 
     public int getIdProceso() {
         return idProceso;
     }
 
-    // Carga automática de 10 elementos al crear el proceso
-    private void cargarElementosPorDefecto() {
-        for (int i = 1; i <= 10; i++) {
+    // Carga automática de elementos al crear el proceso
+    private void cargarElementos() {
+        for (int i = 1; i <= this.cantidadElementos; i++) {
             // Usa el id del proceso actual para el idP y un valor arbitrario (puedes cambiarlo)
             elementos.add(new Elemento(i, 0, idProceso));
         }

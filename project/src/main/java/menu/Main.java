@@ -69,11 +69,12 @@ public class Main {
             return;
         }
 
-        Proceso p = new Proceso(id);
+        int tamanoProceso = pedirEnteroMultiploDe4("Ingrese el tamaño del proceso (numero de paginas, múltiplo de 4): ");
+        Proceso p = new Proceso(id, tamanoProceso);
         try {
             boolean cargado = scheduler.cargarProcesoEnRam(p);
             procesos.put(id, p);
-            memoriaAbsoluta.addTablaPagina(new TablaPagina(p.getCantidadaElementos(), id));
+            memoriaAbsoluta.addTablaPagina(new TablaPagina(tamanoProceso, id));
             if (cargado) {
                 System.out.println("Proceso creado y cargado en RAM con éxito.");
             } else {

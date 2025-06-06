@@ -1,0 +1,19 @@
+$this ("logica.SchedulerramSize ( "intvirtualSize" (1"int"ö)
+'
+ ("#set-field# ramSize:-
++
+ (&"#set-field# virtualSize:V
+T
+ (,")
+
+logica.RamgetInstancia(I)Llogica/Ram;2getInstancia:B
+logica.Ram%
+#
+ (,"#set-field# ram:b
+`
+ (8"1
+logica.VirtualgetInstancia(I)Llogica/Virtual;2getInstancia:Blogica.Virtual)
+'
+ (8	"#set-field# virtual:
+
+ (*X/home/elses/Desktop/Repositorios/osScheduler/project/src/main/java/logica/Scheduler.java

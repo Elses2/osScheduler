@@ -1,0 +1,77 @@
+
+&logica.Ram#getPagina(I)Llogica/Pagina;\
+R/home/elses/Desktop/Repositorios/osScheduler/project/src/main/java/logica/Ram.java! !("6*ô
+2" "(O
+M
+" "(
+paginalogica.Pagina"__id*"
+
+__unknown_file (
+""‹
+ˆ
+" "(
+paginalogica.Pagina"
+__arrayGet*3
+
+__unknown_file (
+
+%0logica.Pagina[]*"
+
+__unknown_file (
+""*
+5
+1*4
+3$ $("%
+$ $(
+
+paginalogica.Pagina*ñ
+4#" #((qo
+#" #(1	
+%2int"logica.Pagina#getIdL()I*5
+
+__unknown_file (
+
+paginalogica.Pagina2getIdL()g
+e
+#" #(8
+%3boolean"	__compare*
+#2 #(4
+==*
+#" #(1
+	
+%2int*
+#5 #(8
+""*
+2
+3*Œ
+5# #(u
+s
+# #(
+%1boolean"	__compare*
+# #(
+!=*%
+# #(
+
+paginalogica.Pagina*
+# #(
+""*
+2
+4*{
+6" "()g
+e
+" "()
+%0logica.Pagina[]"__id*<
+
+__unknown_file ( *
+
+logica.Ram"
+arrayMemoria*
+2*!
+1' '("
+' '(
+"": 
+
+__unknown_file (
+""B
+
+logica.RamH

@@ -1,0 +1,114 @@
+
+menu.Main#existeEnRam(I)Z]
+Q/home/elses/Desktop/Repositorios/osScheduler/project/src/main/java/menu/Main.java­ ­(&"7*€
+2
+¯ ¯(Q
+O
+
+¯ ¯(
+paginalogica.Pagina"__id*"
+
+__unknown_file (
+""“
+
+
+¯ ¯(
+paginalogica.Pagina"
+__arrayGet*9
+
+__unknown_file (
+
+ramPageslogica.Pagina[]*"
+
+__unknown_file (
+""*
+5
+1*%
+3
+± ±("
+
+± ±(
+""*ý
+4
+°" °((sq
+
+°" °(1	
+%3int"logica.Pagina#getIdP()I*5
+
+__unknown_file (
+
+paginalogica.Pagina2getIdP()o
+m
+
+°" °(>
+%4boolean"	__compare*
+
+°2 °(4
+==*
+
+°" °(1
+	
+%3int*
+
+°5 °(>
+""*
+2
+3*–
+5
+° °(}
+{
+
+° °(
+%2boolean"	__compare*
+
+° °(
+!=*'
+
+° °(
+
+paginalogica.Pagina*
+
+° °(
+""*
+2
+4*²
+7
+® ®(™
+–
+
+® ®(5
+%0
+logica.Ram"&logica.Ram#getInstancia(I)Llogica/Ram;**
+
+__unknown_file ("
+
+logica.Ram*"
+
+__unknown_file (
+""—”
+
+® ®(G
+%1logica.Pagina[]",logica.Ram#getArrayMemoria()[Llogica/Pagina;*.
+
+__unknown_file (
+
+%0
+logica.Ram2getArrayMemoria()f
+d
+
+® ®(H
+ramPageslogica.Pagina[]"__id*3
+
+__unknown_file (
+
+%1logica.Pagina[]*
+2*%
+1
+´ ´("
+
+´ ´(
+"": 
+
+__unknown_file (
+""B"
+	menu.MainX

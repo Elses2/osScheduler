@@ -1,0 +1,83 @@
+
+&logica.MemoriaAbsoluta#deleteTabla(I)Zh
+^/home/elses/Desktop/Repositorios/osScheduler/project/src/main/java/logica/MemoriaAbsoluta.java ("5*Œ
+2 (xv
+ (
+
+%6void"java.util.Iterator#remove()V*6
+
+__unknown_file (
+
+itjava.util.Iterator2remove()*
+1*ò
+3 (”‘
+ (%
+%3logica.TablaPagina"+java.util.Iterator#next()Ljava/lang/Object;*6
+
+__unknown_file (
+
+itjava.util.Iterator2next()c
+a
+ (&
+tlogica.TablaPagina"__id*6
+
+__unknown_file (
+
+%3logica.TablaPaginavt
+ (	
+%4int"logica.TablaPagina#getIdP()I*5
+
+__unknown_file (
+
+tlogica.TablaPagina2getIdP()g
+e
+ (!
+%5boolean"	__compare*
+ (
+==*
+ (
+	
+%4int*
+ (!
+""*
+2
+4*”
+4 (}{
+ (
+%2boolean"java.util.Iterator#hasNext()Z*6
+
+__unknown_file (
+
+itjava.util.Iterator2	hasNext()*
+3
+1*þ
+5# ((k
+i
+# ((
+%0java.util.List"__id*A
+
+__unknown_file (%*#
+logica.MemoriaAbsoluta"
+lista–“
+# (3
+%1java.util.Iterator"-java.util.List#iterator()Ljava/util/Iterator;*2
+
+__unknown_file (
+
+%0java.util.List2
+iterator()d
+b
+ (4
+itjava.util.Iterator"__id*6
+
+__unknown_file (
+
+%1java.util.Iterator*
+4*!
+1$ $("
+$ $(
+"": 
+
+__unknown_file (
+""B
+logica.MemoriaAbsolutaHX

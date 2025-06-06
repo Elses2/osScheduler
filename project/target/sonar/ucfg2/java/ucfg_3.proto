@@ -1,0 +1,45 @@
+
+logica.Pagina#getIdP()I_
+U/home/elses/Desktop/Repositorios/osScheduler/project/src/main/java/logica/Pagina.java ("3*ü
+2 (f
+d
+ (
+%2logica.Elemento"__id*;
+
+__unknown_file (*
+logica.Pagina"
+
+elementoqo
+ ( 	
+%3int"logica.Elemento#getIdP()I*3
+
+__unknown_file (
+
+%2logica.Elemento2getIdP()"
+ (!
+""*ò
+3 (f
+d
+ (
+%0logica.Elemento"__id*;
+
+__unknown_file (*
+logica.Pagina"
+
+elementos
+q
+ (
+%1boolean"	__compare*
+ (
+!=*#
+ (
+
+%0logica.Elemento*
+ (
+""*
+2
+1*!
+1 ("
+ (
+""B
+logica.PaginaHX

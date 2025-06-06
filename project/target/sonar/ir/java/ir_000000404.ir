@@ -1,0 +1,18 @@
+"this
+ 
+("logica.VirtualtamanoTotal
+ 
+(#"int"¥L
+J
+ (9"$
+logica.MemoriagetTamanoArray(I)I2getTamanoArray:Bint(
+&
+ (9"#set-field# tamano:,
+*
+' (2"#get-field# tamano:Bint?
+=
+ (3"#new-object#2Constructor:Blogica.Pagina[].
+,
+ (3"#set-field# arrayMemoria:
+
+ (*V/home/elses/Desktop/Repositorios/osScheduler/project/src/main/java/logica/Virtual.java

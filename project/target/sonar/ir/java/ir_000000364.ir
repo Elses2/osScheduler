@@ -1,0 +1,21 @@
+this ("
+logica.RamtamanoTotal ("int"¥L
+J
+	 	(9"$
+logica.MemoriagetTamanoArray(I)I2getTamanoArray:Bint(
+&
+	 	(9"#set-field# tamano:,
+*
+
+' 
+(2"#get-field# tamano:Bint?
+=
+
+ 
+(3"#new-object#2Constructor:Blogica.Pagina[].
+,
+
+ 
+(3"#set-field# arrayMemoria:
+
+ (*R/home/elses/Desktop/Repositorios/osScheduler/project/src/main/java/logica/Ram.java

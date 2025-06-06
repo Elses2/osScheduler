@@ -1,0 +1,7 @@
+organization=elses2
+projectKey=com.ejemplo:scheduler
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.64232
+dashboardUrl=https://sonarcloud.io/dashboard?id=com.ejemplo%3Ascheduler
+ceTaskId=AZdGb046e2q_tjGdUqm5
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZdGb046e2q_tjGdUqm5

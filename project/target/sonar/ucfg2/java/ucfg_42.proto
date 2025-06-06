@@ -1,0 +1,111 @@
+
+menu.Main#existeEnVirtual(I)Z]
+Q/home/elses/Desktop/Repositorios/osScheduler/project/src/main/java/menu/Main.java· ·(*"7*„
+2
+¹ ¹(Q
+O
+
+¹ ¹(
+paginalogica.Pagina"__id*"
+
+__unknown_file (
+""—
+”
+
+¹ ¹(
+paginalogica.Pagina"
+__arrayGet*=
+
+__unknown_file (!
+
+virtualPageslogica.Pagina[]*"
+
+__unknown_file (
+""*
+5
+1*%
+3
+» »("
+
+» »(
+""*ý
+4
+º" º((sq
+
+º" º(1	
+%3int"logica.Pagina#getIdP()I*5
+
+__unknown_file (
+
+paginalogica.Pagina2getIdP()o
+m
+
+º" º(>
+%4boolean"	__compare*
+
+º2 º(4
+==*
+
+º" º(1
+	
+%3int*
+
+º5 º(>
+""*
+2
+3*–
+5
+º º(}
+{
+
+º º(
+%2boolean"	__compare*
+
+º º(
+!=*'
+
+º º(
+
+paginalogica.Pagina*
+
+º º(
+""*
+2
+4*Î
+7
+¸  ¸('©
+¦
+
+¸  ¸(A
+%0logica.Virtual".logica.Virtual#getInstancia(I)Llogica/Virtual;*.
+
+__unknown_file ("
+logica.Virtual*"
+
+__unknown_file (
+""Ÿœ
+
+¸  ¸(S
+%1logica.Pagina[]"0logica.Virtual#getArrayMemoria()[Llogica/Pagina;*2
+
+__unknown_file (
+
+%0logica.Virtual2getArrayMemoria()j
+h
+
+¸ ¸(T
+virtualPageslogica.Pagina[]"__id*3
+
+__unknown_file (
+
+%1logica.Pagina[]*
+2*%
+1
+¾ ¾("
+
+¾ ¾(
+"": 
+
+__unknown_file (
+""B"
+	menu.MainX

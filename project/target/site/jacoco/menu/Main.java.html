@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scheduler</a> &gt; <a href="index.source.html" class="el_package">menu</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package menu;
+
+import logica.*;
+
+import java.util.*;
+
+<span class="nc" id="L7">public class Main {</span>
+<span class="nc" id="L8">    private static Scanner scanner = new Scanner(System.in);</span>
+    private static Scheduler scheduler;
+<span class="nc" id="L10">    private static MemoriaAbsoluta memoriaAbsoluta = new MemoriaAbsoluta();</span>
+<span class="nc" id="L11">    private static Map&lt;Integer, Proceso&gt; procesos = new HashMap&lt;&gt;();</span>
+    private static int ramSize;
+    private static int virtualSize;
+
+    public static void main(String[] args) {
+<span class="nc" id="L16">        clearScreen();</span>
+<span class="nc" id="L17">        System.out.println(&quot;=== Simulador de Gestión de Memoria ===&quot;);</span>
+<span class="nc" id="L18">        System.out.println(&quot;===============================ADVERTENCIA=======================================&quot;);</span>
+<span class="nc" id="L19">        System.out.println(&quot;=Esto es una version experimental con opciones limitadas y no excenta de errores=&quot;);</span>
+<span class="nc" id="L20">        System.out.println(&quot;=================================================================================\n&quot;);</span>
+
+<span class="nc" id="L22">        System.out.println(&quot;El tamaño de las paginas es de 4 kylobytes.&quot;);</span>
+
+<span class="nc" id="L24">        ramSize = pedirEnteroMultiploDe4(&quot;Ingrese el tamaño de RAM (múltiplo de 4): &quot;);</span>
+<span class="nc" id="L25">        virtualSize = pedirEnteroMultiploDe4(&quot;Ingrese el tamaño de Memoria Virtual (múltiplo de 4): &quot;);</span>
+
+<span class="nc" id="L27">        scheduler = new Scheduler(ramSize, virtualSize);</span>
+<span class="nc" id="L28">        boolean exit = false;</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        while (!exit) {</span>
+<span class="nc" id="L30">            clearScreen();</span>
+<span class="nc" id="L31">            System.out.println(&quot;\n--- Menú Principal ---&quot;);</span>
+<span class="nc" id="L32">            System.out.println(&quot;1. Crear y cargar proceso en RAM&quot;);</span>
+<span class="nc" id="L33">            System.out.println(&quot;2. Eliminar proceso&quot;);</span>
+<span class="nc" id="L34">            System.out.println(&quot;3. Mostrar estado de RAM y Virtual&quot;);</span>
+<span class="nc" id="L35">            System.out.println(&quot;4. Mostrar elementos de proceso&quot;);</span>
+<span class="nc" id="L36">            System.out.println(&quot;5. Mostrar tabla de páginas de un proceso&quot;);</span>
+<span class="nc" id="L37">            System.out.println(&quot;6. Salir&quot;);</span>
+<span class="nc" id="L38">            System.out.println(&quot;7. Manual&quot;);</span>
+<span class="nc" id="L39">            System.out.print(&quot;Elige una opción: &quot;);</span>
+<span class="nc" id="L40">            int opt = pedirEnteroEnRango(1, 7);</span>
+
+<span class="nc bnc" id="L42" title="All 8 branches missed.">            switch (opt) {</span>
+<span class="nc" id="L43">                case 1: crearYcargarProceso(); break;</span>
+<span class="nc" id="L44">                case 2: eliminarProceso(); break;</span>
+<span class="nc" id="L45">                case 3: mostrarEstado(); break;</span>
+<span class="nc" id="L46">                case 4: mostrarElementosProceso(); break;</span>
+<span class="nc" id="L47">                case 5: mostrarTablaPaginas(); break;</span>
+<span class="nc" id="L48">                case 6: exit = true; break;</span>
+<span class="nc" id="L49">                case 7: mostrarManual(); esperarEnter(); break;</span>
+<span class="nc" id="L50">                default: System.out.println(&quot;Opción inválida.&quot;);</span>
+            }
+<span class="nc" id="L52">        }</span>
+<span class="nc" id="L53">        clearScreen();</span>
+<span class="nc" id="L54">        System.out.println(&quot;¡Hasta luego!&quot;);</span>
+<span class="nc" id="L55">    }</span>
+
+    private static void crearYcargarProceso() {
+<span class="nc" id="L58">        clearScreen();</span>
+<span class="nc" id="L59">        System.out.println(&quot;--- Crear y Cargar Proceso en RAM ---&quot;);</span>
+<span class="nc" id="L60">        int id = pedirEnteroPositivo(&quot;ID del proceso: &quot;);</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        if (procesos.containsKey(id)) {</span>
+<span class="nc" id="L62">            System.out.println(&quot;Ya existe un proceso con ese ID en el sistema.&quot;);</span>
+<span class="nc" id="L63">            esperarEnter();</span>
+<span class="nc" id="L64">            return;</span>
+        }
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if (procesoExisteEnMemorias(id)) {</span>
+<span class="nc" id="L67">            System.out.println(&quot;Ya existe un proceso con ese ID en RAM o en Memoria Virtual.&quot;);</span>
+<span class="nc" id="L68">            esperarEnter();</span>
+<span class="nc" id="L69">            return;</span>
+        }
+
+<span class="nc" id="L72">        Proceso p = new Proceso(id);</span>
+        try {
+<span class="nc" id="L74">            boolean cargado = scheduler.cargarProcesoEnRam(p);</span>
+<span class="nc" id="L75">            procesos.put(id, p);</span>
+<span class="nc" id="L76">            memoriaAbsoluta.addTablaPagina(new TablaPagina(p.getCantidadaElementos(), id));</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">            if (cargado) {</span>
+<span class="nc" id="L78">                System.out.println(&quot;Proceso creado y cargado en RAM con éxito.&quot;);</span>
+            } else {
+<span class="nc" id="L80">                System.out.println(&quot;Proceso creado. No había espacio suficiente en RAM, se realizó swap.&quot;);</span>
+            }
+<span class="nc" id="L82">            actualizarTablaPaginas(id);</span>
+<span class="nc" id="L83">        } catch (Exception e) {</span>
+<span class="nc" id="L84">            System.out.println(&quot;Error al cargar el proceso en RAM: &quot; + e.getMessage());</span>
+<span class="nc" id="L85">        }</span>
+<span class="nc" id="L86">        esperarEnter();</span>
+<span class="nc" id="L87">    }</span>
+
+    private static void eliminarProceso() {
+<span class="nc" id="L90">        clearScreen();</span>
+<span class="nc" id="L91">        System.out.println(&quot;--- Eliminar Proceso ---&quot;);</span>
+<span class="nc" id="L92">        int id = pedirEnteroPositivo(&quot;ID del proceso a eliminar: &quot;);</span>
+
+<span class="nc" id="L94">        boolean estabaEnRam = existeEnRam(id);</span>
+<span class="nc" id="L95">        boolean estabaEnVirtual = existeEnVirtual(id);</span>
+
+        try {
+<span class="nc" id="L98">            scheduler.descargarProcesoDeRam(id);</span>
+<span class="nc" id="L99">        } catch (Exception e) { }</span>
+        try {
+<span class="nc" id="L101">            scheduler.descargarProcesoDeVirtual(id);</span>
+<span class="nc" id="L102">        } catch (Exception e) { }</span>
+
+<span class="nc bnc" id="L104" title="All 4 branches missed.">        if (estabaEnRam || estabaEnVirtual) {</span>
+<span class="nc" id="L105">            memoriaAbsoluta.deleteTabla(id);</span>
+<span class="nc" id="L106">            procesos.remove(id);</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">            if (estabaEnRam) {</span>
+<span class="nc" id="L108">                System.out.println(&quot;Proceso eliminado de RAM.&quot;);</span>
+            }
+<span class="nc bnc" id="L110" title="All 2 branches missed.">            if (estabaEnVirtual) {</span>
+<span class="nc" id="L111">                System.out.println(&quot;Proceso eliminado de Memoria Virtual.&quot;);</span>
+            }
+        } else {
+<span class="nc" id="L114">            System.out.println(&quot;No se encontró un proceso con ese ID en RAM ni en Memoria Virtual.&quot;);</span>
+        }
+<span class="nc" id="L116">        esperarEnter();</span>
+<span class="nc" id="L117">    }</span>
+
+    private static void mostrarEstado() {
+<span class="nc" id="L120">        clearScreen();</span>
+<span class="nc" id="L121">        System.out.println(&quot;--- Estado de la Memoria ---&quot;);</span>
+<span class="nc" id="L122">        scheduler.mostrarEstado();</span>
+<span class="nc" id="L123">        esperarEnter();</span>
+<span class="nc" id="L124">    }</span>
+
+    private static void mostrarElementosProceso() {
+<span class="nc" id="L127">        clearScreen();</span>
+<span class="nc" id="L128">        System.out.println(&quot;--- Mostrar Elementos de Proceso ---&quot;);</span>
+<span class="nc" id="L129">        int id = pedirEnteroPositivo(&quot;ID del proceso: &quot;);</span>
+<span class="nc" id="L130">        Proceso p = procesos.get(id);</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        if (p == null) {</span>
+<span class="nc" id="L132">            System.out.println(&quot;Proceso no encontrado.&quot;);</span>
+<span class="nc" id="L133">            esperarEnter();</span>
+<span class="nc" id="L134">            return;</span>
+        }
+<span class="nc" id="L136">        p.mostrarElementos();</span>
+<span class="nc" id="L137">        esperarEnter();</span>
+<span class="nc" id="L138">    }</span>
+
+    private static void mostrarTablaPaginas() {
+<span class="nc" id="L141">        clearScreen();</span>
+<span class="nc" id="L142">        System.out.println(&quot;--- Mostrar Tabla de Páginas ---&quot;);</span>
+<span class="nc" id="L143">        int id = pedirEnteroPositivo(&quot;ID del proceso: &quot;);</span>
+<span class="nc" id="L144">        TablaPagina tabla = memoriaAbsoluta.getTabla(id);</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">        if (tabla == null) {</span>
+<span class="nc" id="L146">            System.out.println(&quot;No hay tabla para ese proceso.&quot;);</span>
+<span class="nc" id="L147">            esperarEnter();</span>
+<span class="nc" id="L148">            return;</span>
+        }
+<span class="nc" id="L150">        tabla.imprimirTabla();</span>
+<span class="nc" id="L151">        esperarEnter();</span>
+<span class="nc" id="L152">    }</span>
+
+    // ========== MÉTODOS AUXILIARES Y VALIDACIONES ==========
+
+    // Verifica si existe un proceso con ese ID en RAM o Virtual
+    private static boolean procesoExisteEnMemorias(int idProceso) {
+<span class="nc" id="L158">        Pagina[] ramPages = Ram.getInstancia(ramSize).getArrayMemoria();</span>
+<span class="nc" id="L159">        Pagina[] virtualPages = Virtual.getInstancia(virtualSize).getArrayMemoria();</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        for (Pagina pagina : ramPages) {</span>
+<span class="nc bnc" id="L161" title="All 4 branches missed.">            if (pagina != null &amp;&amp; pagina.getIdP() == idProceso) {</span>
+<span class="nc" id="L162">                return true;</span>
+            }
+        }
+<span class="nc bnc" id="L165" title="All 2 branches missed.">        for (Pagina pagina : virtualPages) {</span>
+<span class="nc bnc" id="L166" title="All 4 branches missed.">            if (pagina != null &amp;&amp; pagina.getIdP() == idProceso) {</span>
+<span class="nc" id="L167">                return true;</span>
+            }
+        }
+<span class="nc" id="L170">        return false;</span>
+    }
+
+    private static boolean existeEnRam(int idProceso) {
+<span class="nc" id="L174">        Pagina[] ramPages = Ram.getInstancia(ramSize).getArrayMemoria();</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">        for (Pagina pagina : ramPages) {</span>
+<span class="nc bnc" id="L176" title="All 4 branches missed.">            if (pagina != null &amp;&amp; pagina.getIdP() == idProceso) {</span>
+<span class="nc" id="L177">                return true;</span>
+            }
+        }
+<span class="nc" id="L180">        return false;</span>
+    }
+
+    private static boolean existeEnVirtual(int idProceso) {
+<span class="nc" id="L184">        Pagina[] virtualPages = Virtual.getInstancia(virtualSize).getArrayMemoria();</span>
+<span class="nc bnc" id="L185" title="All 2 branches missed.">        for (Pagina pagina : virtualPages) {</span>
+<span class="nc bnc" id="L186" title="All 4 branches missed.">            if (pagina != null &amp;&amp; pagina.getIdP() == idProceso) {</span>
+<span class="nc" id="L187">                return true;</span>
+            }
+        }
+<span class="nc" id="L190">        return false;</span>
+    }
+
+    private static void actualizarTablaPaginas(int idProceso) {
+<span class="nc" id="L194">        TablaPagina tabla = memoriaAbsoluta.getTabla(idProceso);</span>
+<span class="nc bnc" id="L195" title="All 2 branches missed.">        if (tabla != null) {</span>
+<span class="nc" id="L196">            tabla.actualizar();</span>
+        }
+<span class="nc" id="L198">    }</span>
+
+    private static void mostrarManual() {
+<span class="nc" id="L201">        clearScreen();</span>
+<span class="nc" id="L202">        System.out.println(&quot;\n=== Manual de Usuario ===&quot;);</span>
+<span class="nc" id="L203">        System.out.println(&quot;1. Crear y cargar proceso en RAM: Permite crear un nuevo proceso ingresando un ID único y lo carga automáticamente en RAM.&quot;);</span>
+<span class="nc" id="L204">        System.out.println(&quot;2. Eliminar proceso: Elimina el proceso de RAM o Memoria Virtual según donde se encuentre.&quot;);</span>
+<span class="nc" id="L205">        System.out.println(&quot;3. Mostrar estado de RAM y Virtual: Muestra el estado actual de ambas memorias.&quot;);</span>
+<span class="nc" id="L206">        System.out.println(&quot;4. Mostrar elementos de proceso: Visualiza los elementos del proceso dado su ID.&quot;);</span>
+<span class="nc" id="L207">        System.out.println(&quot;5. Mostrar tabla de páginas de un proceso: Muestra la tabla de páginas del proceso.&quot;);</span>
+<span class="nc" id="L208">        System.out.println(&quot;6. Salir: Finaliza la ejecución del programa.&quot;);</span>
+<span class="nc" id="L209">        System.out.println(&quot;7. Manual: Muestra esta ayuda.&quot;);</span>
+<span class="nc" id="L210">    }</span>
+
+    private static int pedirEnteroMultiploDe4(String mensaje) {
+<span class="nc" id="L213">        int valor = -1;</span>
+        while (true) {
+<span class="nc" id="L215">            System.out.print(mensaje);</span>
+            try {
+<span class="nc" id="L217">                valor = Integer.parseInt(scanner.nextLine().trim());</span>
+<span class="nc bnc" id="L218" title="All 4 branches missed.">                if (valor &gt; 0 &amp;&amp; valor % 4 == 0) {</span>
+<span class="nc" id="L219">                    break;</span>
+                } else {
+<span class="nc" id="L221">                    System.out.println(&quot;Debe ser un número entero, positivo y múltiplo de 4.&quot;);</span>
+                }
+<span class="nc" id="L223">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L224">                System.out.println(&quot;Entrada inválida. Por favor, ingrese un número entero.&quot;);</span>
+<span class="nc" id="L225">            }</span>
+        }
+<span class="nc" id="L227">        return valor;</span>
+    }
+
+    private static int pedirEnteroPositivo(String mensaje) {
+<span class="nc" id="L231">        int valor = -1;</span>
+        while (true) {
+<span class="nc" id="L233">            System.out.print(mensaje);</span>
+            try {
+<span class="nc" id="L235">                valor = Integer.parseInt(scanner.nextLine().trim());</span>
+<span class="nc bnc" id="L236" title="All 2 branches missed.">                if (valor &gt; 0) {</span>
+<span class="nc" id="L237">                    break;</span>
+                } else {
+<span class="nc" id="L239">                    System.out.println(&quot;Debe ser un número entero positivo.&quot;);</span>
+                }
+<span class="nc" id="L241">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L242">                System.out.println(&quot;Entrada inválida. Por favor, ingrese un número entero.&quot;);</span>
+<span class="nc" id="L243">            }</span>
+        }
+<span class="nc" id="L245">        return valor;</span>
+    }
+
+    private static int pedirEnteroEnRango(int min, int max) {
+<span class="nc" id="L249">        int valor = -1;</span>
+        while (true) {
+            try {
+<span class="nc" id="L252">                valor = Integer.parseInt(scanner.nextLine().trim());</span>
+<span class="nc bnc" id="L253" title="All 4 branches missed.">                if (valor &gt;= min &amp;&amp; valor &lt;= max) {</span>
+<span class="nc" id="L254">                    break;</span>
+                } else {
+<span class="nc" id="L256">                    System.out.println(&quot;Opción fuera de rango. Intente de nuevo.&quot;);</span>
+                }
+<span class="nc" id="L258">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L259">                System.out.println(&quot;Entrada inválida. Por favor, ingrese un número entero.&quot;);</span>
+<span class="nc" id="L260">            }</span>
+<span class="nc" id="L261">            System.out.print(&quot;Elige una opción: &quot;);</span>
+        }
+<span class="nc" id="L263">        return valor;</span>
+    }
+
+    private static void clearScreen() {
+        // Funciona en la mayoría de consolas modernas (no en todas)
+<span class="nc" id="L268">        System.out.print(&quot;\033[H\033[2J&quot;);</span>
+<span class="nc" id="L269">        System.out.flush();</span>
+<span class="nc" id="L270">    }</span>
+
+    private static void esperarEnter() {
+<span class="nc" id="L273">        System.out.println(&quot;\nPresiona ENTER para continuar...&quot;);</span>
+<span class="nc" id="L274">        scanner.nextLine();</span>
+<span class="nc" id="L275">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

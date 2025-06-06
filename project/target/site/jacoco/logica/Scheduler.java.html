@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Scheduler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scheduler</a> &gt; <a href="index.source.html" class="el_package">logica</a> &gt; <span class="el_source">Scheduler.java</span></div><h1>Scheduler.java</h1><pre class="source lang-java linenums">package logica;
+
+import java.util.*;
+
+/**
+ * Scheduler encargado de gestionar el intercambio de páginas/procesos entre la RAM y la Memoria Virtual.
+ * Permite cargar procesos en RAM, descargar procesos a la Virtual, y realizar swaps según necesidad.
+ * Implementa una política FIFO simple, pero modular para mejoras.
+ */
+public class Scheduler {
+    private Ram ram;
+    private Virtual virtual;
+    private final int ramSize;
+    private final int virtualSize;
+    // Mantiene el orden de llegada de procesos para swapping FIFO
+<span class="nc" id="L16">    private Queue&lt;Integer&gt; procesosEnRam = new LinkedList&lt;&gt;();</span>
+
+    /**
+     * Inicializa el Scheduler con tamaños de RAM y Memoria Virtual.
+     */
+<span class="nc" id="L21">    public Scheduler(int ramSize, int virtualSize) {</span>
+<span class="nc" id="L22">        this.ramSize = ramSize;</span>
+<span class="nc" id="L23">        this.virtualSize = virtualSize;</span>
+<span class="nc" id="L24">        this.ram = Ram.getInstancia(ramSize);</span>
+<span class="nc" id="L25">        this.virtual = Virtual.getInstancia(virtualSize);</span>
+<span class="nc" id="L26">    }</span>
+
+    /**
+     * Intenta cargar un proceso completo en la RAM. Si no hay espacio, realiza swap a Virtual.
+     * 
+     * @param proceso Proceso a cargar.
+     * @return true si se cargó en RAM, false si se tuvo que ir a Virtual.
+     */
+    public boolean cargarProcesoEnRam(Proceso proceso) {
+<span class="nc" id="L35">        int paginasLibres = contarEspaciosLibres(ram.getArrayMemoria());</span>
+<span class="nc" id="L36">        int paginasNecesarias = proceso.getCantidadaElementos();</span>
+
+        // Si hay espacio suficiente en RAM, cargar todas las páginas
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if (paginasLibres &gt;= paginasNecesarias) {</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">            for (Elemento elem : proceso.getElementos()) {</span>
+<span class="nc" id="L41">                ram.setPagina(elem.getIdL(), elem);</span>
+<span class="nc" id="L42">            }</span>
+<span class="nc" id="L43">            procesosEnRam.add(proceso.getIdProceso());</span>
+<span class="nc" id="L44">            return true;</span>
+        } else {
+            // No hay espacio suficiente
+<span class="nc" id="L47">            swapProcesoARam(proceso);</span>
+<span class="nc" id="L48">            return false;</span>
+        }
+    }
+
+    /**
+     * Realiza swap: elige un proceso en RAM para mandar a Virtual y libera espacio, 
+     * luego carga el nuevo proceso en RAM.
+     */
+    public void swapProcesoARam(Proceso nuevoProceso) {
+<span class="nc" id="L57">        int paginasNecesarias = nuevoProceso.getCantidadaElementos();</span>
+
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        while (contarEspaciosLibres(ram.getArrayMemoria()) &lt; paginasNecesarias) {</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">            if (procesosEnRam.isEmpty()) {</span>
+<span class="nc" id="L61">                throw new RuntimeException(&quot;No hay procesos en RAM para hacer swap.&quot;);</span>
+            }
+            // FIFO: saca el primero cargado
+<span class="nc" id="L64">            int idProcesoASacar = procesosEnRam.poll();</span>
+<span class="nc" id="L65">            descargarProcesoDeRam(idProcesoASacar);</span>
+<span class="nc" id="L66">        }</span>
+
+        // Ahora hay espacio, cargar el nuevo proceso
+<span class="nc" id="L69">        cargarProcesoEnRam(nuevoProceso);</span>
+<span class="nc" id="L70">    }</span>
+
+    /**
+     * Descarga todas las páginas de un proceso de la RAM y las lleva a la memoria virtual.
+     */
+    public void descargarProcesoDeRam(int idProceso) {
+<span class="nc" id="L76">        Pagina[] paginasRam = ram.getArrayMemoria();</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        for (int i = 0; i &lt; paginasRam.length; i++) {</span>
+<span class="nc" id="L78">            Pagina pag = paginasRam[i];</span>
+<span class="nc bnc" id="L79" title="All 4 branches missed.">            if (pag != null &amp;&amp; pag.getIdP() == idProceso) {</span>
+                // Mueve a Virtual
+<span class="nc" id="L81">                virtual.setPagina(pag.getIdL(), pag.getElemento());</span>
+<span class="nc" id="L82">                paginasRam[i] = null; // Libera el espacio en RAM</span>
+            }
+        }
+<span class="nc" id="L85">    }</span>
+
+    /**
+     * Descarga todas las páginas de un proceso de la Virtual y las elimina (opcional).
+     */
+    public void descargarProcesoDeVirtual(int idProceso) {
+<span class="nc" id="L91">        Pagina[] paginasVirtual = virtual.getArrayMemoria();</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        for (int i = 0; i &lt; paginasVirtual.length; i++) {</span>
+<span class="nc" id="L93">            Pagina pag = paginasVirtual[i];</span>
+<span class="nc bnc" id="L94" title="All 4 branches missed.">            if (pag != null &amp;&amp; pag.getIdP() == idProceso) {</span>
+<span class="nc" id="L95">                paginasVirtual[i] = null;</span>
+            }
+        }
+<span class="nc" id="L98">    }</span>
+
+    /**
+     * Cuenta los espacios libres en un array de páginas.
+     */
+    private int contarEspaciosLibres(Pagina[] array) {
+<span class="nc" id="L104">        int libres = 0;</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">        for (Pagina pagina : array) {</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">            if (pagina == null) libres++;</span>
+        }
+<span class="nc" id="L108">        return libres;</span>
+    }
+
+    /**
+     * Muestra el estado de la RAM y la Virtual para debug.
+     */
+  public void mostrarEstado() {
+<span class="nc" id="L115">    System.out.println(&quot;Estado de RAM:&quot;);</span>
+<span class="nc" id="L116">    Pagina[] arrayRam = ram.getArrayMemoria();</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">    for (int i = 0; i &lt; arrayRam.length; i++) {</span>
+<span class="nc" id="L118">        Pagina p = arrayRam[i];</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">        if (p != null)</span>
+<span class="nc" id="L120">            System.out.println(&quot;Proceso: &quot; + p.getIdP() +</span>
+<span class="nc" id="L121">                               &quot;, Direccion logica: &quot; + (p.getIdL() - 1) +</span>
+                               &quot;,  Direccion fisica: &quot; + i);
+    }
+<span class="nc" id="L124">    System.out.println(&quot;Estado de Virtual:&quot;);</span>
+<span class="nc" id="L125">    Pagina[] arrayVirtual = virtual.getArrayMemoria();</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">    for (int i = 0; i &lt; arrayVirtual.length; i++) {</span>
+<span class="nc" id="L127">        Pagina p = arrayVirtual[i];</span>
+<span class="nc bnc" id="L128" title="All 2 branches missed.">        if (p != null)</span>
+<span class="nc" id="L129">            System.out.println(&quot;Proceso: &quot; + p.getIdP() +</span>
+<span class="nc" id="L130">                               &quot;, Direccion logica: &quot; + (p.getIdL() - 1) +</span>
+                               &quot;,  Direccion fisica: &quot; + i);
+    }
+<span class="nc" id="L133">}  </span>
+}        
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

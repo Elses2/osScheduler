@@ -1,0 +1,134 @@
+
+!menu.Main#pedirEnteroEnRango(II)I]
+Q/home/elses/Desktop/Repositorios/osScheduler/project/src/main/java/menu/Main.javaø ø()"1"10*Ç
+2
+… …(T
+R
+
+… …(
+%10java.io.PrintStream"__id*"
+
+__unknown_file (
+""ÖÓ
+
+… …(2
+%11void".java.io.PrintStream#print(Ljava/lang/String;)V*8
+
+__unknown_file (
+
+%10java.io.PrintStream*3
+
+__unknown_file (
+Elige una opciÃ³n: 2print(Ljava/lang/String;)*
+10
+1*Ú
+4
+€ €(S
+Q
+
+€ €(
+%6java.io.PrintStream"__id*"
+
+__unknown_file (
+""îë
+
+€ €(R
+
+%7void"0java.io.PrintStream#println(Ljava/lang/String;)V*7
+
+__unknown_file (
+
+%6java.io.PrintStream*I
+
+__unknown_file (-+
+)OpciÃ³n fuera de rango. Intente de nuevo.2println(Ljava/lang/String;)*
+2*ƒ
+6
+ı$ ı()j
+h
+
+ı$ ı(0
+%5boolean"	__compare*
+
+ı* ı(,
+<=*
+
+ı$ ı()
+""*
+
+ı- ı(0
+""*
+4
+1*ƒ
+7
+ü ü(Cj
+h
+
+ı ı( 
+%4boolean"	__compare*
+
+ı ı(
+>=*
+
+ı ı(
+""*
+
+ı ı( 
+""*
+4
+6*Ë
+8
+ü ü(C´
+±
+
+ü ü(C	
+%3int"/java.lang.Integer#parseInt(Ljava/lang/String;)I*1
+
+__unknown_file ("
+java.lang.Integer*4
+
+__unknown_file (
+
+%2java.lang.String*
+7*§
+9
+ü) ü(B
+
+ü) ü(B
+%2java.lang.String")java.lang.String#trim()Ljava/lang/String;*4
+
+__unknown_file (
+
+%1java.lang.String2trim()*
+8*™
+10
+ü ü(e
+c
+
+ü) ü(0
+%0java.util.Scanner"__id*6
+
+__unknown_file (*
+	menu.Main"	
+scannerš—
+
+ü) ü(;
+%1java.lang.String".java.util.Scanner#nextLine()Ljava/lang/String;*5
+
+__unknown_file (
+
+%0java.util.Scanner2
+nextLine()*
+9*%
+1
+‡ ‡("
+
+‡ ‡(
+"": 
+
+__unknown_file (
+"": 
+
+__unknown_file (
+""B"
+	menu.MainX

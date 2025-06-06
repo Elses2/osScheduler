@@ -1,0 +1,165 @@
+
+1.0com.ejemplo:schedulerJavaFrontend"1749233380542*java2.BŒ
+.
+)src/test/java/logica/TablaPaginaTest.java2
+
+package4
+
+logica5
+
+logica.TablaPaginaTest7
+
+
+class8
+
+access9
+
+public10
+
+simple name11
+
+TablaPaginaTest12
+,
+&logica.TablaPaginaTest#testGetTabla()V14
+
+method15
+
+testGetTabla16
+
+org.junit.Test18
+
+unknown19
+
+annotated by20
+
+
+uses21
+
+logica.TablaPagina23
+
+is type24
+
+calls25
+
+org.junit.Assert27
+
+
+references28
+L
+Forg.junit.Assert#assertEquals([Ljava/lang/Object;[Ljava/lang/Object;)V30
+&
+ logica.TablaPagina#getTabla()[[I32
+*
+$logica.TablaPaginaTest#TestGetIdP()V34
+
+
+TestGetIdP35
+(
+"org.junit.Assert#assertEquals(JJ)V37J
+
+1
+12Z
+
+3	
+354j·
+9
+64
+678 *
+1 (:3B
+	
+9
+10
+
+
+11
+12
+
+36
+363719
+
+29
+293019
+
+17
+171819
+
+22
+222319
+
+26
+262719
+@
+33:
+333415 *
+1 (26:3B
+	
+9
+10
+
+
+11
+35
+@
+13:
+131415 *
+1 (26:3B
+	
+9
+10
+
+
+11
+16
+
+31
+313219r°
+
+131720*
+1 (
+
+131721*
+1 (
+
+
+132224*
+1 (
+
+132221*
+1 (
+
+132225*
+1 (&
+
+132628*
+1 (
+
+132925*
+1 (
+
+132228*
+1 ( 
+
+133125*
+1! ()
+
+331720*
+1 (
+
+331721*
+1 (
+
+
+332224*
+1 (
+
+332221*
+1 (
+
+332225*
+1 ((
+
+332628*
+1 (
+
+333625*
+1 (

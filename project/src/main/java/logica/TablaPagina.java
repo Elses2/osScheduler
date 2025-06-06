@@ -31,9 +31,10 @@ public class TablaPagina {
                 Elemento elemento = pagina.getElemento();
 
                 if (elemento.getIdP() == this.idP) {
-                    int idL = elemento.getIdL();
-                    if (idL >= 0 && idL < tabla.length) {
-                        tabla[idL][1] = i; // índice físico en RAM
+                    int elementoIdL = elemento.getIdL();
+                    int tableIndex = elementoIdL - 1;
+                    if (tableIndex >= 0 && tableIndex < tabla.length) {
+                        tabla[tableIndex][1] = i; // índice físico en RAM
                     }
                 }
             }
